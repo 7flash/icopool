@@ -9,13 +9,7 @@ let tokensaleInstance;
 let poolInstance;
 
 module.exports = function(deployer, network, accounts) {
-  let poolArgs = [
-    context.fundingStart,
-    context.fundingEnd,
-    context.minFunding,
-    context.maxFunding,
-    context.minTokens
-  ]
+  const { fundingStart, fundingEnd, minFunding, maxFunding, minTokens } = context
 
   deployer.then(function() {
     return deployer.deploy(Token)
@@ -32,9 +26,9 @@ module.exports = function(deployer, network, accounts) {
 
     return tokensaleInstance.setToken(tokenInstance.address)
   }).then(function() {
-    poolArgs.unshift(tokenInstance.address)
-    poolArgs.unshift(tokensaleInstance.address)
-
-    return deployer.deploy(Pool, ...poolArgs)
+    return deployer.deploy(Pool,
+      tokenInstance.address, tokensaleInstance.address,
+      fundingStart, fundingEnd, minFunding, maxFunding, minTokens
+    )
   })
 }

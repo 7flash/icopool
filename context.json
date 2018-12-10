@@ -1,0 +1,6 @@
+{
+  "fundingStart": 1544438638, // Monday, December 10, 2018 1:53:55 PM GMT+03:00
+  "fundingEnd": 1544438638, // Monday, December 17, 2018 1:53:55 PM GMT+03:00
+  "minFunding": 1000000000000000000, // 1 ether
+  "maxFunding": 5000000000000000000 // 5 ether
+}
